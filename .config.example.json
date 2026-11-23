@@ -1,0 +1,39 @@
+{
+  "projects": {
+    "push_swap": {
+      "repoUrl": "https://github.com/AkJaum/push_swap.git",
+      "branch": "main"
+    },
+    "a_maze_ing": {
+      "repoUrl": "https://github.com/AkJaum/a_maze.git",
+      "branch": "master",
+      "runTimeoutMs": 30000
+    },
+    "codexion": {
+      "repoUrl": "https://github.com/AkJaum/codexion.git",
+      "branch": "main"
+    },
+    "get_next_line": {
+      "repoUrl": "https://github.com/AkJaum/get_next_line.git",
+      "branch": "main"
+    },
+    "printf": {
+      "repoUrl": "https://github.com/AkJaum/ft_printf.git",
+      "branch": "main"
+    },
+    "libft": {
+      "repoUrl": "https://github.com/AkJaum/libft.git",
+      "branch": "main",
+      "allowBash": false
+    },
+    "fly_in": {
+      "repoUrl": "https://github.com/AkJaum/fly_in.git",
+      "branch": "main",
+      "web": {
+        "command": ["python3", "-m", "src.web_app", "--map", "map.txt", "--host", "0.0.0.0", "--port", "8081", "--no-open"],
+        "port": 8081,
+        "url": "http://127.0.0.1:8081"
+      }
+    }
+  }
+}

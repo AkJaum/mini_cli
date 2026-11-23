@@ -25,4 +25,4 @@ ENV PYTHONUNBUFFERED=1
 USER app
 EXPOSE 8080
 
-CMD ["sh", "-c", "gunicorn runner_service.wsgi:application --bind 0.0.0.0:${PORT}"]
+CMD ["sh", "-c", "exec gunicorn runner_service.wsgi:application --workers 1 --threads 8 --bind 0.0.0.0:${PORT}"]
