@@ -5,7 +5,8 @@ from urllib.parse import urlparse
 from runner_service.project_config import load_project_catalog
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_CATALOG = load_project_catalog(BASE_DIR / "config.json")
+PROJECT_CONFIG_PATH = BASE_DIR / (os.getenv("PROJECT_CONFIG_PATH") or "config.json")
+PROJECT_CATALOG = load_project_catalog(PROJECT_CONFIG_PATH)
 
 
 def _normalize_allowed_host(raw_value: str) -> str:

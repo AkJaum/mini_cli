@@ -17,7 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY manage.py ./
 COPY runner_service ./runner_service
 
-RUN addgroup -S app && adduser -S app -G app && chown -R app:app /app
+# Render grants read access to runtime secret files through group 1000.
+RUN addgroup -S -g 1000 app && adduser -S app -G app && chown -R app:app /app
 
 ENV PORT=8080
 ENV PYTHONDONTWRITEBYTECODE=1

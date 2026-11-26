@@ -53,6 +53,12 @@ docker run --rm --name project-runner \
 
 Deixe `config.json` legível para o usuário do container. Se mudar `PORT`, ajuste o mapeamento de portas. Por padrão, o comando publica a API apenas na própria máquina. Se um site precisar acessá-la, configure a rede privada ou um proxy HTTPS (servidor que repassa as chamadas) e inclua o hostname utilizado em `DJANGO_ALLOWED_HOSTS`.
 
+### Docker no Render
+
+1. Em **Environment → Secret Files**, adicione um arquivo chamado `config.json` com o conteúdo do seu catálogo. O Render disponibiliza o arquivo em `/etc/secrets/config.json` quando o container inicia. [Arquivos secretos no Render](https://render.com/docs/docker-secrets#accessing-secret-files-at-runtime)
+2. Em **Environment Variables**, defina `PROJECT_CONFIG_PATH=/etc/secrets/config.json` e inclua o domínio do serviço em `DJANGO_ALLOWED_HOSTS` (por exemplo, `mini-cli.onrender.com`). Defina valores aleatórios e distintos para `DJANGO_SECRET_KEY` e `RUNNER_SHARED_TOKEN`. O Gunicorn usa a porta fornecida pelo Render em `PORT`. [Porta do serviço](https://render.com/docs/web-services#port-binding)
+3. Em **Settings → Health Checks**, configure `/health` e faça o deploy. A rota deve responder com HTTP 200 e `"ok": true`. [Health Checks do Render](https://render.com/docs/health-checks)
+
 ### Python local
 
 Requer Linux ou macOS, Python 3.12, Git, Bash e Make. Instale os compiladores exigidos pelos projetos que for executar.
@@ -74,6 +80,7 @@ make run
 | --- | --- |
 | `PORT` | `8080`. Porta do serviço. |
 | `WORKDIR_BASE` | `/tmp/runner-workspaces`. Diretório gravável onde os clones ficam. |
+| `PROJECT_CONFIG_PATH` | Opcional. Local do catálogo JSON. O padrão é `config.json` na raiz. Caminhos relativos são resolvidos a partir da raiz do projeto. |
 | `DJANGO_SECRET_KEY` | Segredo do Django. Defina um valor próprio em qualquer ambiente compartilhado. |
 | `DJANGO_ALLOWED_HOSTS` | `localhost,127.0.0.1,project-runner`. Hosts separados por vírgula. |
 | `RUNNER_SHARED_TOKEN` | Token que o cliente envia em `X-Runner-Token`. Sem ele, as rotas comuns ficam abertas e a abertura do Bash fica desabilitada. |
