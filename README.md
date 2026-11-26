@@ -32,7 +32,7 @@ Em `config.json`, cada chave dentro de `projects` é a **ref** (o identificador 
 | `branch` | Branch que o Git vai clonar. O clone traz o commit mais recente desse branch no momento da preparação. |
 | `runTimeoutMs` | Opcional. Tempo máximo de `/projects/run` para esse projeto, em milissegundos. O padrão é `RUN_TIMEOUT_MS`. |
 | `allowBash` | Opcional. Habilita `runtime: "bash"` no terminal interativo. O padrão é `false` e abrir o Bash exige `RUNNER_SHARED_TOKEN` configurado. |
-| `web` | Opcional. Preserva o fluxo do visualizador de projetos como Fly-in. Veja [Visualizador web](#visualizador-web). |
+| `web` | Opcional. Utilizado para projetos que sobem algum site, como algum projeto em Next. Veja [Visualizador web](#visualizador-web). |
 
 O catálogo é lido na inicialização. Reinicie o serviço após editar o JSON. Use `{"projects": {}}` para subir com catálogo vazio. `config.json` e `.env` ficam fora do Git. Configure `DJANGO_SECRET_KEY` e `RUNNER_SHARED_TOKEN` com valores aleatórios e distintos. Você pode gerar cada valor com `python3 -c 'import secrets; print(secrets.token_urlsafe(32))'`.
 
