@@ -149,7 +149,7 @@ O cliente chama `poll` repetidamente até receber `running: false` e decodifica 
 
 ### Visualizador web
 
-Para um projeto com `web` no catálogo, `POST /projects/build` com `"args": ["web"]` inicia `web.command` na raiz do clone. O runner espera a aplicação responder em `http://127.0.0.1:<web.port>` e devolve `web.url` como `webUrl`. Configure a URL alcançável pelo cliente e publique ou encaminhe essa porta separadamente. O processo é compartilhado pela ref enquanto está ativo e o cleanup preserva o clone que o hospeda. O exemplo do Fly-in usa NiceGUI.
+Para um projeto com `web` no catálogo, `POST /projects/build` com `"args": ["web"]` inicia `web.command` na raiz do clone. O runner espera a aplicação responder em `http://127.0.0.1:<web.port>` e devolve `web.url` como `webUrl`. Configure a URL alcançável pelo cliente e publique ou encaminhe essa porta separadamente. O processo é compartilhado pela ref enquanto está ativo e o cleanup preserva o clone que o hospeda. O exemplo do meu projeto Fly-in que usa NiceGUI.
 
 ## Integração e estado do serviço
 
